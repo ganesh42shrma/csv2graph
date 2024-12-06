@@ -1,102 +1,76 @@
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileCsv } from "@fortawesome/free-solid-svg-icons";
+import Footer from "../Components/Footer";
+import Hero from "../Components/Hero";
+import { useDispatch } from "react-redux";
+import { setToast } from "../Redux/slices/toastSlice";
+
 export const Home = () => {
+  const [file, setFile] = useState(null);
+  const dispatch = useDispatch();
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    if (selectedFile && selectedFile.type === "text/csv") {
+      setFile(selectedFile);
+      dispatch(setToast({ message: "CSV file selected!", type: "success" }));
+    } else {
+      dispatch(
+        setToast({ message: "Please select a valid CSV file", type: "error" })
+      );
+    }
+  };
+
+  const handleUpload = () => {
+    if (file) {
+      dispatch(setToast({ message: "Uploading file...", type: "info" }));
+    } else {
+      dispatch(setToast({ message: "No file selected", type: "error" }));
+    }
+  };
+
   return (
     <div className="bg-gray-900 text-white h-screen flex flex-col">
-      <div className="flex-grow container mx-auto px-6 py-16 lg:flex lg:items-center lg:justify-between">
-        <div className="lg:w-1/2">
-          <h1 className="text-4xl font-bold sm:text-5xl">
-            Process Your <span className="text-blue-500">CSV Files</span> with
-            Ease
-          </h1>
-          <p className="mt-6 text-lg text-gray-400">
-            Upload your data and explore insights with interactive charts
-            powered by Google Charts.
-          </p>
-          <div className="mt-8 flex gap-4">
-            <a
-              href="#"
-              className="px-6 py-3 text-lg font-medium bg-blue-500 hover:bg-blue-600 rounded-lg shadow-lg"
-            >
-              Upload Now
-            </a>
-            <a
-              href="#features"
-              className="px-6 py-3 text-lg font-medium border border-gray-500 hover:border-white rounded-lg"
-            >
-              Explore Features
-            </a>
+      <Hero />
+      <div className="flex-grow flex justify-center items-center p-4 bg-gray-900">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">Upload CSV File</div>
+            <p className="text-gray-700 text-base">
+              Only CSV files are accepted.
+            </p>
           </div>
-        </div>
-        <div className="mt-10 lg:mt-0 lg:w-1/2">
-          <img
-            src="https://via.placeholder.com/600x400"
-            alt="CSV File Processing Illustration"
-            className="rounded-lg shadow-lg"
-          />
+
+          <div className="px-6 py-4">
+            <input
+              type="file"
+              accept=".csv"
+              onChange={handleFileChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {file && (
+            <div className="px-6 py-4 text-center text-gray-700">
+              <p>
+                {" "}
+                <FontAwesomeIcon icon={faFileCsv} /> {file.name}
+              </p>
+            </div>
+          )}
+
+          <div className="px-6 py-4 text-center">
+            <button
+              className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+              onClick={handleUpload}
+            >
+              Upload
+            </button>
+          </div>
         </div>
       </div>
 
-      <footer className="bg-gray-800 text-gray-400">
-        <div className="container mx-auto px-6 py-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold text-white">
-                About CSV Charts
-              </h3>
-              <p className="mt-4">
-                Our platform simplifies data visualization, making it accessible
-                and interactive for everyone.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white">Quick Links</h3>
-              <ul className="mt-4 space-y-2">
-                <li>
-                  <a href="#upload" className="hover:text-white">
-                    Upload CSV
-                  </a>
-                </li>
-                <li>
-                  <a href="#features" className="hover:text-white">
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a href="#support" className="hover:text-white">
-                    Support
-                  </a>
-                </li>
-                <li>
-                  <a href="#contact" className="hover:text-white">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white">Follow Us</h3>
-              <ul className="mt-4 flex space-x-4">
-                <li>
-                  <a href="#" className="hover:text-white"></a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white"></a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white">Contact Us</h3>
-              <p className="mt-4">
-                CSV Visuals Inc. <br />
-                Tech City, Innovation Zone
-              </p>
-              <p className="mt-2">Email: support@csvcharts.com</p>
-            </div>
-          </div>
-          <div className="mt-8 text-center border-t border-gray-700 pt-4">
-            <p>© 2024 CSV Visuals Inc. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
