@@ -23,7 +23,7 @@ The application includes sample CSV files for you to test the features, making i
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/your-username/csv-to-graph-converter.git](https://github.com/ganesh42shrma/csv2graph)
+git clone https://github.com/ganesh42shrma/csv2graph
 cd csv2graph
 ```
 
