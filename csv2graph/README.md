@@ -6,6 +6,10 @@ The **CSV to Graph Converter** is a web application that simplifies the process 
 
 The application includes sample CSV files for you to test the features, making it beginner-friendly and ready to use.
 
+### 🔗 Live Demo
+
+You can try out the tool directly from the deployed version on [Vercel](https://csv2graph.vercel.app/).
+
 ---
 
 ## ✨ Features
@@ -73,7 +77,6 @@ csv2graph/
 ├── package-lock.json
 ├── README.md
 └── tailwind.config.js
-
 ```
 
 ---
@@ -98,7 +101,7 @@ csv2graph/
 
 ## 📥 Sample CSV Files
 
-To help you get started quickly, we provide sample CSV files.Download the Sample CSV zip File and extract and upload the CSV file.
+To help you get started quickly, we provide sample CSV files. Download the Sample CSV zip File, extract it, and upload the CSV file.
 
 ---
 
