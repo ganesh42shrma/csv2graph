@@ -45,22 +45,35 @@ Open your browser and navigate to `http://localhost:3000`.
 ## 📂 Folder Structure
 
 ```
-csv-to-graph-converter/
+csv2graph/
+├── node_modules/
 ├── public/
-│   ├── index.html
 ├── src/
-│   ├── components/
-│   │   ├── Hero.js
-│   │   ├── CsvUploader.js
-│   │   ├── GraphDisplay.js
-│   │   ├── SampleCsvs.js
-│   ├── assets/
-│   │   ├── sample1.csv
-│   │   ├── sample2.csv
+│   ├── Assets/
+│   │   └── herocharts.jpg
+│   ├── Components/
+│   │   ├── CsvStatsCard.js
+│   │   ├── customButton.js
+│   │   ├── Footer.js
+│   │   └── Hero.js
+│   ├── Helpers/
+│   ├── Pages/
+│   │   └── Graph.js
+│   ├── Redux/
+│   │   └── slices/
+│   │       ├── toastSlice.js
+│   │       └── store.js
 │   ├── App.js
+│   ├── App.css
+│   ├── index.css
 │   ├── index.js
+│   └── logo.svg
+├── .gitignore
 ├── package.json
-└── README.md
+├── package-lock.json
+├── README.md
+└── tailwind.config.js
+
 ```
 
 ---
@@ -85,10 +98,7 @@ csv-to-graph-converter/
 
 ## 📥 Sample CSV Files
 
-To help you get started quickly, we provide sample CSV files:
-
-1. **[Download Sample CSV 1](./src/assets/sample1.csv)**
-2. **[Download Sample CSV 2](./src/assets/sample2.csv)**
+To help you get started quickly, we provide sample CSV files.Download the Sample CSV zip File and extract and upload the CSV file.
 
 ---
 
